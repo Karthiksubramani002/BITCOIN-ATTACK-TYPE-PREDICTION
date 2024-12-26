@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Crypto</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<style>
+.back{
+background-image: url("{{ url_for('static', filename='image/bitcoin.jpg') }}");
+ background-size:cover;
+ background-position:center;
+ background-attachment:fixed;
+ background-repeat:no-repeat;
+}
+.white{
+color:black;
+font-weight: 800;
+}
+.space{
+margin:10px 30px;
+padding:15px 10px;
+background: gold;
+width:auto;
+}
+.gap{
+padding:10px 20px;
+}
+
+</style>
+  
+</head>
+
+<body class="back">
+ <div>
+
+	<div class="jumbotron">
+	<h1 style="text-align:center"> BITCOIN HEIST RANSOMWARE ATTACK PREDICTION </h1>
+	
+	</div>
+     <!-- Main Input For Receiving Query to our ML -->
+    <form class="form-group" action="{{ url_for('predict')}}"method="post">
+    <div class="container">
+	<div class="row">
+	<div class="gap col-md-6">
+		
+		<label class="white"  for=""> YEAR </label>
+		<input type="number" class="space form-control" step="0.01" name="year" placeholder="YEAR" required="required" /><br>
+		<label class="white"  for=""> DAY </label>
+		<input type="number" class="space form-control" step="0.01" name="day" placeholder="DAY" required="required" /><br>
+		<label class="white"  for=""> LENGTH </label>
+		<input type="number" class="space form-control" step="0.01" name="length" placeholder="LENGTH" required="required" /><br>
+		<label class="white"  for=""> WEIGHT </label>
+		<input type="number" class="space form-control" step="0.01" name="weight" placeholder="WEIGHT" required="required" /><br>
+		
+		
+	</div>
+	<div class="gap col-md-6">
+		<label class="white"  for=""> COUNT </label>
+		<input type="number" class="space form-control" step="0.01" name="count" placeholder="COUNT" required="required" /><br>
+		<label class="white"  for=""> LOOPED </label>
+		<input type="number" class="space form-control" step="0.01" name="looped" placeholder="LOOPED" required="required" /><br>
+		<label class="white"  for=""> NEIGHBORS </label>
+		<input type="number" class="space form-control" step="0.001" name=" DiabetesPedigreeFunction" placeholder="NEIGHBORS" required="required" /><br>
+		<label class="white"  for=""> INCOME </label>
+		<input type="number" class="space form-control" step="0.01" name="income" placeholder="INCOME" required="required" /><br>
+		
+</div>
+		
+</div>
+</div>
+
+<div style="padding:2% 35%">
+  <button type="submit" class="btn btn-success btn-block" style="width:350px;padding:20px">Predict</button>		
+</div>
+      
+    </form>
+
+   <br>
+   <br>
+<div  style="background:cyan;padding:2% 35%">
+   {{ prediction_text }}
+</div>
+ </div>
+
+
+</body>
+</html>
